@@ -844,7 +844,7 @@ std::unordered_map<std::string, int> getTensorMetadata(const at::Tensor& t) {
   if (serialization_map.find(device_type) != serialization_map.end()) {
     // Pass the tensor and metadata map references as parameters to the custom
     // serialization function.
-    ((BackendMetaPtr)(serialization_map[device_type].first))(t, metadata);
+    (static_cast<BackendMetaPtr>(serialization_map[device_type].first))(t, metadata);
   }
   return metadata;
 }
@@ -869,7 +869,7 @@ void setTensorMetadata(
   if (serialization_map.find(device_type) != serialization_map.end()) {
     // Pass the tensor and metadata map references as parameters to the custom
     // deserialization function.
-    ((BackendMetaPtr)(serialization_map[device_type].second))(t, metadata);
+    (static_cast<BackendMetaPtr>(serialization_map[device_type].second))(t, metadata);
   }
 }
 
