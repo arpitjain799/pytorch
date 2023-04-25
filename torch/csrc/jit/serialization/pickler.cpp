@@ -813,7 +813,7 @@ static std::unordered_map<int, std::pair<void*, void*>> serialization_map;
 // Register function pointer of Tensor BackendMetadata for serialization.
 void TensorBackendMetaRegistry(c10::DeviceType t, void* get_fptr, void* set_fptr) {
     TORCH_CHECK(
-        fptr_map.find(static_cast<int>(t)) == fptr_map.end(),
+        serialization_map.find(static_cast<int>(t)) == serialization_map.end(),
         "The tensor BackendMeta serialization function pointer for ",
         t, "has been registered.");
     serialization_map[static_cast<int>(t)] = std::make_pair(get_fptr, set_fptr);
