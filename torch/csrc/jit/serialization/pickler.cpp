@@ -817,8 +817,8 @@ void TensorBackendMetaRegistry(c10::DeviceType t, void* get_fptr, void* set_fptr
         "The tensor BackendMeta serialization function pointer for ",
         t, "has been registered.");
     serialization_map[static_cast<int>(t)] = std::make_pair(get_fptr, set_fptr);
-  }
 }
+
 
 // Return a map of Tensor Metadata which including BackendMetaData for
 // serialization. For now, it only takes care of `conj` and `neg` bit.
