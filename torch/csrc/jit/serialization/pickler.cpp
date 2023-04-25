@@ -870,7 +870,7 @@ void setTensorMetadata(
   if (serialization_map.find(device_type) != serialization_map.end()) {
     // Pass the tensor and metadata map references as parameters to the custom
     // deserialization function.
-     void* fptr = serialization_map[device_type].second;
+    void* fptr = serialization_map[device_type].second;
     ((BackendMetaPtr)fptr)(t, metadata);
   }
 }
