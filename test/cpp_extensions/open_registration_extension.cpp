@@ -30,7 +30,7 @@ struct CustomBackendMetadata : public c10::BackendMeta {
   int format_number_{-1};
   mutable bool cloned_{false};
   // define the constructor
-  CustomBackendMetadata(int backend_format, int format_number): backend_format_(backend_format), format_number_(format_number) {}
+  CustomBackendMetadata(int backend_version_format, int format_number): backend_version_format_(backend_version_format), format_number_(format_number) {}
   c10::intrusive_ptr<c10::BackendMeta> clone(const c10::intrusive_ptr<c10::BackendMeta>& ptr) const override {
     cloned_ = true;
     return c10::BackendMeta::clone(ptr);
